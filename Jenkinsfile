@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -10,7 +10,7 @@ pipeline {
     
         stage ("terraform init") {
             steps {
-                sh ("terraform init -reconfigure") 
+                sh ("terraform init --reconfigure") 
             }
         }
         
@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage (" Action") {
+        stage ("action") {
             steps {
                 echo "Terraform action is --> ${action}"
                 sh ('terraform ${action} --auto-approve') 
